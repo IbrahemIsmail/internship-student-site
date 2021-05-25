@@ -1,0 +1,78 @@
+
+.thumbnail img{
+	width: 100%;
+}
+.thumbnail{
+	padding: 0;
+}
+.thumbnail .caption-full{
+	padding: 10px;
+}
+.delBtn{
+	display: inline;
+}
+
+#alert{
+	margin-top: 20px;
+}
+body{
+	/* background: rgb(14, 16, 17); */
+}
+.jumbotron{
+	/* background: #2f2e34; */
+	/* color: rgb(211, 207, 201); */
+}
+h4{
+	/* color: rgb(211, 207, 201); */
+}
+.lead{
+	/* color: rgb(211, 207, 201); */
+}
+.thumbnail{
+	/* color: rgb(211, 207, 201); */
+	/* background: rgb(14, 16, 17); */
+}
+.well{
+	/* color: rgb(211, 207, 201); */
+	/* background: rgb(14, 16, 17); */
+}
+.list-group-item{
+	/* background: rgb(14, 16, 17); */
+	/* color: rgb(211, 207, 201); */
+}
+.form-control{
+	/* background-color: #202125; */
+}
+h1{
+	/* color: rgb(211, 207, 201); */
+}
+/* .application: hover span{
+	
+} */
+
+#acceptBtn{
+	opacity: 0;
+}
+
+/* .fa-user-check{
+	opacity: 0;
+} */
+
+.application:hover #acceptBtn{
+	size: 1.5em;
+	opacity: 1; 	
+} 
+
+
+
+.chosen{
+	border-radius:3px;
+	background-color: #c9ffcf;
+}
+.nav-item{
+	color: white !important;
+}
+#chosenApplication{
+	-webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 50px 17px rgba(10,255,167,0.04); 
+	box-shadow: 0px 10px 13px -7px #000000, 5px 5px 50px 17px rgba(10,255,167,0.04);
+}

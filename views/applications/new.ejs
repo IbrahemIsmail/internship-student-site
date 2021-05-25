@@ -1,0 +1,24 @@
+<%- include("../partials/header") %>
+<%- include("../partials/nav") %>
+<div class="container">
+	<div class="row">
+		<h1 class="text-center">
+	Add New Application to <%= intern.name %>
+</h1>
+		
+		<!-- we dont know what the text is it might be wrong  -->
+	<div style="margin: 30px auto; width: 30%; ">
+		<form action="/internships/id=<%= intern._id %>/applications" method="post">
+			<div class="form-group">
+				<input class="form-control" name="application[text]" type="text" placeholder="text">
+			</div>
+	<div class="form-group">
+				<input class="btn btn-info btn-lg btn-block" type="submit">
+			</div>
+</form>
+		<a href="/internships">Back to the Internships</a>
+		</div>
+	</div>
+</div>
+
+<%- include("../partials/footer") %>

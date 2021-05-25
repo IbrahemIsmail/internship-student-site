@@ -1,0 +1,46 @@
+<nav class="nav navbar-inverse bg-primary">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/internships">LinkedOut</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<% if(!currUser) {%>
+				
+				
+				<li><a href="/login">Login</a></li>
+				
+				<li class="dropdown">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign Up <span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+					<li><a href="/register">Sign up as a Student</a></li>
+					<li><a href="/compRegister">Sign up as a Company</a></li>
+					<!-- <li role="separator" class="divider"></li> -->
+				  </ul>
+				</li>
+				
+				
+				
+				<!-- <li><a href="/register">Sign Up</a></li> -->
+				<% } else{ %>
+				<!-- <li><a href="/#"> signed in as: <strong><%= currUser.username%></strong></a></li> -->
+				<li><a href="/user=<%=currUser.username %>"><strong><%= currUser.username%>'s Profile</strong></a></li>
+				<li><a href="/logout">Log Out</a></li>
+				<% } %>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div id="alert" class="container">
+	<% if(error && error.length > 0){ %>
+	<div class="alert alert-danger" role="alert">
+		<%= error %>
+	</div>
+	<% } %>
+	<% if(success && success.length > 0){ %>
+	<div class="alert alert-success" role="alert">
+		<%= success %>
+	</div>
+	<% } %>
+</div>

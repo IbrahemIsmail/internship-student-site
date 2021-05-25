@@ -1,0 +1,109 @@
+<%- include("../partials/header") %>
+<%- include("../partials/nav") %>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<p class="lead">
+				LinkedOut
+			</p>
+			<div class="list-group">
+				<li class="list-group-item active"><%=user.location%></li>
+				<li class="list-group-item"><%=user.email%></li>
+				<li class="list-group-item">+<%=user.phoneNumber%></li>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="thumbnail">
+				<img class="img-responsive" src="<%= intern.image%>">
+				<div class="caption-full">
+					<h4 class="pull-right">
+						$<%= intern.price%>/hour
+					</h4>
+					<a><h4>
+						<%= intern.name %>
+						</h4></a>
+					<p>
+						<%= intern.description %>
+					</p>
+					<p>
+  <em>Submitted by: <a href="/view=<%= intern.author.username %>"><%= intern.author.username %></a>, <%= moment(intern.created).fromNow() %></em>
+</p>
+					<% if(currUser && intern.author.id.equals(currUser._id)){ %>
+					<a class="btn btn-warning" href="/internships/id=<%= intern._id %>/edit">Edit</a>
+					<form class="delBtn" action="/internships/id=<%= intern._id %>?_method=delete" method="post">
+						<button class="btn btn-danger">
+							Delete
+						</button>
+					</form>
+					<% } %>
+				</div>
+			</div>
+			<div class="well">
+				
+				<% if(currUser && currUser.type == "Student"){ %>
+				<div class="text-right">
+					<a class="btn btn-md btn-primary" href="/internships/id=<%= intern._id %>/applications/new">Apply</a>
+				</div>
+				<% } %>
+				
+				<hr>
+				<% for(let i=0;i<intern.applications.length;i++){ %>
+				<% if(intern.applications[i]._id.equals(intern.chosen)) {%>
+				<div class="row application" id="chosenApplication">
+				<% } %>
+				<div class="row application">
+					<div class="col-md-12">
+						<a href="/view=<%=intern.applications[i].author.username%>"><strong><%= intern.applications[i].author.username %></strong></a>
+						<span class="pull-right"><%= moment(intern.applications[i].created).fromNow() %></span>
+						<%if(currUser && currUser.type=="Company" && currUser.id==intern.author.id){ %>
+							
+							<% if(intern.applications[i]._id.equals(intern.chosen)) {%>
+							<form method="post" action="/internships/id=<%= intern._id %>/applications/applicationid=<%=intern.applications[i]._id%>/cancel?_method=put">
+							<span>					
+								<button id="acceptBtn" type="submit" class="pull-right">
+									Unaccept   <i style="padding-left: 5px" class="pull-right fas fa-user-check"> </i>
+								</button>
+								</span>
+							</form>	
+							<% } else{ %>	
+							
+							<form method="post" action="/internships/id=<%= intern._id %>/applications/applicationid=<%=intern.applications[i]._id%>/choose?_method=put">
+							<span>					
+								<button id="acceptBtn" type="submit" class="pull-right">
+									Accept   <i style="padding-left: 5px" class="pull-right fas fa-user-check"> </i>
+								</button>
+								</span>
+							</form>	
+						
+						<% } } %>
+						<p>
+							<%= intern.applications[i].text %>
+						</p>
+						<% if(currUser && intern.applications[i].author.id.equals(currUser._id)){ %>
+						<a id="commentEdit" href="/internships/id=<%= intern._id %>/applications/<%= intern.applications[i]._id%>/edit" class="btn btn-sm btn-warning">Edit</a>
+						<form class="delBtn" action="/internships/id=<%= intern._id %>/applications/<%= intern.applications[i]._id%>?_method=delete" method="post">
+						<button class="btn btn-sm btn-danger">
+							Delete
+						</button>
+					</form>
+						<% } %>
+					</div>
+				</div>
+				<% } %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <script type="text/javascript">
+	$("span").on("click", "i", function(){
+		var thingy =$(this).parent();
+		thingy.parent().toggleClass("chosen");
+		
+	});
+</script> -->
+
+
+<%- include("../partials/footer") %>

@@ -1,0 +1,41 @@
+<%- include("../partials/header") %>
+<%- include("../partials/nav") %>
+<div class="container">
+	<header class="jumbotron">
+		<div class="container">
+			<h1>
+	Welcome To LinkedOut!
+</h1>
+		<p>
+			View our internships 
+		</p>
+			<% if(currUser && currUser.type == "Company"){ %>
+		<p>
+			<a class="btn btn-info btn-lg" href="internships/new">Add New Internships</a>
+		</p>
+			<% } %>
+		</div>
+</header>
+
+	<div class="row text-center" style="display: flex; flex-wrap: wrap;">
+		<% for(i=0;i<interns.length;i++){ %> 
+	<div class="col-md-3 col-sm-6">
+		<div class="thumbnail">
+			<img src="<%= interns[i].image%>">
+		</div>
+		<div class="caption">
+			<h4>
+				<%= interns[i].name %>
+			</h4>
+		</div>
+		<p>
+			<a href="/internships/id=<%= interns[i]._id %>" class="btn btn-info btn-lg">More Info</a>
+		</p>
+</div>
+<% } %>
+</div>
+	</div>
+
+
+
+<%- include("../partials/footer") %>

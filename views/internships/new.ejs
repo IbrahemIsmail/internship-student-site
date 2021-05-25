@@ -1,0 +1,31 @@
+<%- include("../partials/header") %>
+<%- include("../partials/nav") %>
+<div class="container">
+	<div class="row">
+		<h1 class="text-center">
+	Create a new internship
+</h1>
+	<div style="margin: 30px auto; width: 30%; ">
+		<form action="/internships" method="post">
+			<div class="form-group">
+				<input class="form-control" name="name" type="text" placeholder="Name">
+			</div>
+	<div class="form-group">
+				<input class="form-control" name="image" type="text" placeholder="image">
+			</div>
+			<div class="form-group">
+				<input class="form-control" name="price" type="number" placeholder="price" min="0.01" step="0.01">
+			</div>
+			<div class="form-group">
+				<input class="form-control" name="description" type="text" placeholder="description">
+			</div>
+	<div class="form-group">
+				<input class="btn btn-info btn-lg btn-block" type="submit">
+			</div>
+</form>
+		<a href="/internships">Back to the internships</a>
+		</div>
+	</div>
+</div>
+
+<%- include("../partials/footer") %>
