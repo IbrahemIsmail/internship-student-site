@@ -20,7 +20,10 @@ const internshipRoutes  = require("./routes/internships"),
 	  applicationRoutes = require("./routes/applications"),
 	  indexRoutes       = require("./routes/index");
 
-mongoose.connect('mongodb://localhost:27017/spmProjectDB', {
+
+const DBURL = process.env.DBURL || 'mongodb://localhost:27017/spmProjectDB';
+
+mongoose.connect(DBURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
